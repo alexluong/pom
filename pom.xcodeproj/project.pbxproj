@@ -56,12 +56,12 @@
 		8F764E5421A13B4B00409CF3 /* pom */ = {
 			isa = PBXGroup;
 			children = (
-				8F764E5521A13B4B00409CF3 /* AppDelegate.swift */,
 				8F764E5721A13B4B00409CF3 /* Assets.xcassets */,
 				8F764E5921A13B4B00409CF3 /* MainMenu.xib */,
+				8F764E5521A13B4B00409CF3 /* AppDelegate.swift */,
+				8F764E6321A147D300409CF3 /* Countdown.swift */,
 				8F764E5C21A13B4B00409CF3 /* Info.plist */,
 				8F764E5D21A13B4B00409CF3 /* pom.entitlements */,
-				8F764E6321A147D300409CF3 /* Countdown.swift */,
 			);
 			path = pom;
 			sourceTree = "<group>";

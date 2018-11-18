@@ -8,8 +8,15 @@
 
 import Foundation
 
+enum TimerStatus {
+    case running
+    case paused
+    case stopped
+}
+
 protocol CountdownServiceDelegate {
-    func onTick(total: Int, remaining: Int)
+    func onTimerTick(total: Int, remaining: Int, status: TimerStatus)
+    func onTimerAction(total: Int, remaining: Int, status: TimerStatus)
 }
 
 class CountdownService {
@@ -17,6 +24,7 @@ class CountdownService {
     var total = 0
     var remaining = 0
     var timer: Timer!
+    var timerStatus = TimerStatus.stopped
     
     var delegate: CountdownServiceDelegate?
     
@@ -26,16 +34,34 @@ class CountdownService {
     
     public func start() {
         remaining = total
-        timer = Timer.scheduledTimer(timeInterval: 1,
-                                     target: self,
-                                     selector: #selector(tick(timer:)),
-                                     userInfo: nil,
-                                     repeats: true)
+        startTimer()
+        delegate?.onTimerAction(total: total, remaining: remaining, status: timerStatus)
     }
     
-    @objc private func tick(timer: Timer) {
-        print(remaining)
-        delegate?.onTick(total: total, remaining: remaining)
-        remaining -= 1
+    public func stop() {
+        timerStatus = TimerStatus.paused
+        timer?.invalidate()
+        delegate?.onTimerAction(total: total, remaining: remaining, status: timerStatus)
+    }
+    
+    public func resume() {
+        startTimer()
+        delegate?.onTimerAction(total: total, remaining: remaining, status: timerStatus)
+    }
+    
+    private func startTimer() {
+        timerStatus = TimerStatus.running
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func tick() {
+        delegate?.onTimerTick(total: total, remaining: remaining, status: timerStatus)
+        
+        if remaining == 0 {
+            timerStatus = TimerStatus.stopped
+            timer.invalidate()
+        } else {
+            remaining -= 1
+        }
     }
 }

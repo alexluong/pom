@@ -1,5 +1,5 @@
 //
-//  Timer.swift
+//  TimerService.swift
 //  pom
 //
 //  Created by Alex Luong on 11/18/18.
@@ -14,19 +14,31 @@ enum TimerStatus {
     case stopped
 }
 
-protocol CountdownServiceDelegate {
-    func onTimerTick(total: Int, remaining: Int, status: TimerStatus)
-    func onTimerAction(total: Int, remaining: Int, status: TimerStatus)
+struct TimerData {
+    var total: Int
+    var remaining: Int
+    var status: TimerStatus
 }
 
-class CountdownService {
+protocol TimerServiceDelegate {
+    func onTimerTick(timerData: TimerData)
+    func onTimerAction(timerData: TimerData)
+}
+
+extension TimerServiceDelegate {
+    func onTimerTick(timerData: TimerData) {}
+    func onTimerAction(timerData: TimerData) {}
+}
+
+class TimerService {
     
     var total = 0
     var remaining = 0
     var timer: Timer!
     var timerStatus = TimerStatus.stopped
+    var timerData: TimerData!
     
-    var delegate: CountdownServiceDelegate?
+    var delegate: TimerServiceDelegate?
     
     public func setTime(seconds: Int) {
         total = seconds
@@ -35,33 +47,45 @@ class CountdownService {
     public func start() {
         remaining = total
         startTimer()
-        delegate?.onTimerAction(total: total, remaining: remaining, status: timerStatus)
+        callOnAction()
     }
     
     public func stop() {
         timerStatus = TimerStatus.paused
         timer?.invalidate()
-        delegate?.onTimerAction(total: total, remaining: remaining, status: timerStatus)
+        callOnAction()
     }
     
     public func resume() {
         startTimer()
-        delegate?.onTimerAction(total: total, remaining: remaining, status: timerStatus)
+        callOnAction()
     }
     
     private func startTimer() {
+        print("start")
         timerStatus = TimerStatus.running
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
     }
     
     @objc private func tick() {
-        delegate?.onTimerTick(total: total, remaining: remaining, status: timerStatus)
-        
         if remaining == 0 {
             timerStatus = TimerStatus.stopped
             timer.invalidate()
         } else {
             remaining -= 1
         }
+        
+        timerData = createTimerData()
+        delegate?.onTimerTick(timerData: timerData)
     }
+    
+    private func callOnAction() {
+        timerData = createTimerData()
+        delegate?.onTimerAction(timerData: timerData)
+    }
+    
+    private func createTimerData() -> TimerData {
+        return TimerData(total: total, remaining: remaining, status: timerStatus)
+    }
+    
 }

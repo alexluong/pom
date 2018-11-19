@@ -6,77 +6,57 @@
 //  Copyright © 2018 Alex Luong. All rights reserved.
 //
 
-// TODO: Move timer to another thread
-
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, CountdownServiceDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var statusMenu: NSMenu!
-    @IBOutlet weak var startMenuItem: NSMenuItem!
-    @IBOutlet weak var stopMenuItem: NSMenuItem!
-    @IBOutlet weak var resumeMenuItem: NSMenuItem!
-    @IBOutlet weak var quitMenuItem: NSMenuItem!
+    let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    let countdown = CountdownService()
+    let popover = NSPopover()
     
-    @IBAction func startClicked(_ sender: NSMenuItem) {
-        countdown.setTime(seconds: 200)
-        countdown.start()
-    }
-    
-    @IBAction func stopClicked(_ sender: NSMenuItem) {
-        print("stop")
-        countdown.stop()
-    }
-    
-    @IBAction func resumeClicked(_ sender: Any) {
-        print("resume")
-        countdown.resume()
-    }
-    
-    @IBAction func quitClicked(_ sender: NSMenuItem) {
-        NSApplication.shared.terminate(self)
-    }
-    
+    var eventMonitor: EventMonitor?
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        countdown.delegate = self
-        
-        statusItem.title = "Pom"
-        statusItem.menu = statusMenu
-        setMenuBarItemEnability(status: TimerStatus.stopped)
-    }
-    
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Tear down
-    }
-    
-    func onTimerTick(total: Int, remaining: Int, status: TimerStatus) {
-        statusItem.title = String(remaining)
-    }
-    
-    func onTimerAction(total: Int, remaining: Int, status: TimerStatus) {
-        setMenuBarItemEnability(status: status)
-    }
-    
-    func setMenuBarItemEnability(status: TimerStatus) {
-        switch status {
-        case .running:
-            startMenuItem.isEnabled = false
-            stopMenuItem.isEnabled = true
-            resumeMenuItem.isEnabled = false
-        case .stopped:
-            startMenuItem.isEnabled = true
-            stopMenuItem.isEnabled = false
-            resumeMenuItem.isEnabled = false
-        case .paused:
-            startMenuItem.isEnabled = true
-            stopMenuItem.isEnabled = false
-            resumeMenuItem.isEnabled = true
+        if let button = statusItem.button {
+            button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
+            button.action = #selector(togglePopover(_:))
         }
-        quitMenuItem.isEnabled = true
+        
+        popover.contentViewController = TimerViewController.freshController()
+        
+        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
+            if let strongSelf = self, strongSelf.popover.isShown {
+                strongSelf.closePopover(sender: event)
+            }
+        }
     }
 
+    func applicationWillTerminate(_ aNotification: Notification) {
+        eventMonitor?.stop()
+    }
+    
+    @objc func togglePopover(_ sender: Any?) {
+        if popover.isShown {
+            closePopover(sender: sender)
+        } else {
+            showPopover(sender: sender)
+        }
+    }
+    
+    func showPopover(sender: Any?) {
+        if let button = statusItem.button {
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+        }
+        
+        eventMonitor?.start()
+    }
+    
+    func closePopover(sender: Any?) {
+        popover.performClose(sender)
+        
+        eventMonitor?.stop()
+    }
+    
 }
+

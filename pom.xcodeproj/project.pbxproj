@@ -7,26 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F764E5621A13B4B00409CF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F764E5521A13B4B00409CF3 /* AppDelegate.swift */; };
-		8F764E5821A13B4B00409CF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F764E5721A13B4B00409CF3 /* Assets.xcassets */; };
-		8F764E5B21A13B4B00409CF3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8F764E5921A13B4B00409CF3 /* MainMenu.xib */; };
-		8F764E6421A147D300409CF3 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F764E6321A147D300409CF3 /* Countdown.swift */; };
-		8F764E6621A151CF00409CF3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8F764E6521A151CF00409CF3 /* .gitignore */; };
+		8F16248621A24B46008DAF0E /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F16248521A24B46008DAF0E /* TimerViewController.swift */; };
+		8F3CA7F721A24FA500EAD79C /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA7F621A24FA500EAD79C /* EventMonitor.swift */; };
+		8F8927CE21A252D0002B0DC8 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8927CD21A252D0002B0DC8 /* TimerService.swift */; };
+		8FA6B78521A243B400A04BD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA6B78421A243B400A04BD0 /* AppDelegate.swift */; };
+		8FA6B78721A243B400A04BD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA6B78621A243B400A04BD0 /* ViewController.swift */; };
+		8FA6B78921A243B400A04BD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FA6B78821A243B400A04BD0 /* Assets.xcassets */; };
+		8FA6B78C21A243B400A04BD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FA6B78A21A243B400A04BD0 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8F764E5221A13B4B00409CF3 /* pom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pom.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F764E5521A13B4B00409CF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8F764E5721A13B4B00409CF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8F764E5A21A13B4B00409CF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		8F764E5C21A13B4B00409CF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F764E5D21A13B4B00409CF3 /* pom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pom.entitlements; sourceTree = "<group>"; };
-		8F764E6321A147D300409CF3 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
-		8F764E6521A151CF00409CF3 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8F16248521A24B46008DAF0E /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimerViewController.swift; path = pom/Timer/TimerViewController.swift; sourceTree = SOURCE_ROOT; };
+		8F3CA7F621A24FA500EAD79C /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		8F8927CD21A252D0002B0DC8 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimerService.swift; path = pom/Timer/TimerService.swift; sourceTree = SOURCE_ROOT; };
+		8FA6B78121A243B400A04BD0 /* pom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FA6B78421A243B400A04BD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8FA6B78621A243B400A04BD0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8FA6B78821A243B400A04BD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8FA6B78B21A243B400A04BD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8FA6B78D21A243B400A04BD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FA6B78E21A243B400A04BD0 /* pom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pom.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8F764E4F21A13B4B00409CF3 /* Frameworks */ = {
+		8FA6B77E21A243B400A04BD0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -36,46 +40,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8F764E4921A13B4B00409CF3 = {
+		8FA6B77821A243B400A04BD0 = {
 			isa = PBXGroup;
 			children = (
-				8F764E6521A151CF00409CF3 /* .gitignore */,
-				8F764E5421A13B4B00409CF3 /* pom */,
-				8F764E5321A13B4B00409CF3 /* Products */,
+				8FA6B78321A243B400A04BD0 /* pom */,
+				8FA6B78221A243B400A04BD0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		8F764E5321A13B4B00409CF3 /* Products */ = {
+		8FA6B78221A243B400A04BD0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8F764E5221A13B4B00409CF3 /* pom.app */,
+				8FA6B78121A243B400A04BD0 /* pom.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8F764E5421A13B4B00409CF3 /* pom */ = {
+		8FA6B78321A243B400A04BD0 /* pom */ = {
 			isa = PBXGroup;
 			children = (
-				8F764E5721A13B4B00409CF3 /* Assets.xcassets */,
-				8F764E5921A13B4B00409CF3 /* MainMenu.xib */,
-				8F764E5521A13B4B00409CF3 /* AppDelegate.swift */,
-				8F764E6321A147D300409CF3 /* Countdown.swift */,
-				8F764E5C21A13B4B00409CF3 /* Info.plist */,
-				8F764E5D21A13B4B00409CF3 /* pom.entitlements */,
+				8FA6B78821A243B400A04BD0 /* Assets.xcassets */,
+				8FA6B78D21A243B400A04BD0 /* Info.plist */,
+				8FA6B78E21A243B400A04BD0 /* pom.entitlements */,
+				8FA6B79621A2469D00A04BD0 /* Timer */,
+				8FA6B78A21A243B400A04BD0 /* Main.storyboard */,
+				8FA6B78421A243B400A04BD0 /* AppDelegate.swift */,
+				8FA6B78621A243B400A04BD0 /* ViewController.swift */,
+				8F3CA7F621A24FA500EAD79C /* EventMonitor.swift */,
 			);
 			path = pom;
 			sourceTree = "<group>";
 		};
+		8FA6B79621A2469D00A04BD0 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				8F16248521A24B46008DAF0E /* TimerViewController.swift */,
+				8F8927CD21A252D0002B0DC8 /* TimerService.swift */,
+			);
+			name = Timer;
+			path = pom/Timer;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8F764E5121A13B4B00409CF3 /* pom */ = {
+		8FA6B78021A243B400A04BD0 /* pom */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8F764E6021A13B4B00409CF3 /* Build configuration list for PBXNativeTarget "pom" */;
+			buildConfigurationList = 8FA6B79121A243B400A04BD0 /* Build configuration list for PBXNativeTarget "pom" */;
 			buildPhases = (
-				8F764E4E21A13B4B00409CF3 /* Sources */,
-				8F764E4F21A13B4B00409CF3 /* Frameworks */,
-				8F764E5021A13B4B00409CF3 /* Resources */,
+				8FA6B77D21A243B400A04BD0 /* Sources */,
+				8FA6B77E21A243B400A04BD0 /* Frameworks */,
+				8FA6B77F21A243B400A04BD0 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -83,25 +98,25 @@
 			);
 			name = pom;
 			productName = pom;
-			productReference = 8F764E5221A13B4B00409CF3 /* pom.app */;
+			productReference = 8FA6B78121A243B400A04BD0 /* pom.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8F764E4A21A13B4B00409CF3 /* Project object */ = {
+		8FA6B77921A243B400A04BD0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Alex Luong";
 				TargetAttributes = {
-					8F764E5121A13B4B00409CF3 = {
+					8FA6B78021A243B400A04BD0 = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
 			};
-			buildConfigurationList = 8F764E4D21A13B4B00409CF3 /* Build configuration list for PBXProject "pom" */;
+			buildConfigurationList = 8FA6B77C21A243B400A04BD0 /* Build configuration list for PBXProject "pom" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -109,54 +124,56 @@
 				en,
 				Base,
 			);
-			mainGroup = 8F764E4921A13B4B00409CF3;
-			productRefGroup = 8F764E5321A13B4B00409CF3 /* Products */;
+			mainGroup = 8FA6B77821A243B400A04BD0;
+			productRefGroup = 8FA6B78221A243B400A04BD0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8F764E5121A13B4B00409CF3 /* pom */,
+				8FA6B78021A243B400A04BD0 /* pom */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8F764E5021A13B4B00409CF3 /* Resources */ = {
+		8FA6B77F21A243B400A04BD0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F764E5821A13B4B00409CF3 /* Assets.xcassets in Resources */,
-				8F764E6621A151CF00409CF3 /* .gitignore in Resources */,
-				8F764E5B21A13B4B00409CF3 /* MainMenu.xib in Resources */,
+				8FA6B78921A243B400A04BD0 /* Assets.xcassets in Resources */,
+				8FA6B78C21A243B400A04BD0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8F764E4E21A13B4B00409CF3 /* Sources */ = {
+		8FA6B77D21A243B400A04BD0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F764E5621A13B4B00409CF3 /* AppDelegate.swift in Sources */,
-				8F764E6421A147D300409CF3 /* Countdown.swift in Sources */,
+				8F16248621A24B46008DAF0E /* TimerViewController.swift in Sources */,
+				8FA6B78721A243B400A04BD0 /* ViewController.swift in Sources */,
+				8FA6B78521A243B400A04BD0 /* AppDelegate.swift in Sources */,
+				8F8927CE21A252D0002B0DC8 /* TimerService.swift in Sources */,
+				8F3CA7F721A24FA500EAD79C /* EventMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8F764E5921A13B4B00409CF3 /* MainMenu.xib */ = {
+		8FA6B78A21A243B400A04BD0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8F764E5A21A13B4B00409CF3 /* Base */,
+				8FA6B78B21A243B400A04BD0 /* Base */,
 			);
-			name = MainMenu.xib;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8F764E5E21A13B4B00409CF3 /* Debug */ = {
+		8FA6B78F21A243B400A04BD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -217,7 +234,7 @@
 			};
 			name = Debug;
 		};
-		8F764E5F21A13B4B00409CF3 /* Release */ = {
+		8FA6B79021A243B400A04BD0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -271,7 +288,7 @@
 			};
 			name = Release;
 		};
-		8F764E6121A13B4B00409CF3 /* Debug */ = {
+		8FA6B79221A243B400A04BD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -290,7 +307,7 @@
 			};
 			name = Debug;
 		};
-		8F764E6221A13B4B00409CF3 /* Release */ = {
+		8FA6B79321A243B400A04BD0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -312,25 +329,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8F764E4D21A13B4B00409CF3 /* Build configuration list for PBXProject "pom" */ = {
+		8FA6B77C21A243B400A04BD0 /* Build configuration list for PBXProject "pom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8F764E5E21A13B4B00409CF3 /* Debug */,
-				8F764E5F21A13B4B00409CF3 /* Release */,
+				8FA6B78F21A243B400A04BD0 /* Debug */,
+				8FA6B79021A243B400A04BD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8F764E6021A13B4B00409CF3 /* Build configuration list for PBXNativeTarget "pom" */ = {
+		8FA6B79121A243B400A04BD0 /* Build configuration list for PBXNativeTarget "pom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8F764E6121A13B4B00409CF3 /* Debug */,
-				8F764E6221A13B4B00409CF3 /* Release */,
+				8FA6B79221A243B400A04BD0 /* Debug */,
+				8FA6B79321A243B400A04BD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 8F764E4A21A13B4B00409CF3 /* Project object */;
+	rootObject = 8FA6B77921A243B400A04BD0 /* Project object */;
 }

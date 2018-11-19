@@ -8,31 +8,68 @@
 
 import Cocoa
 
+enum LeftButtonTitle: String {
+    case start = "Start"
+    case stop = "Stop"
+    case ok = "OK"
+}
+
 class TimerViewController: NSViewController, TimerServiceDelegate {
     
-    @IBOutlet var minuteLabel: NSTextField!
-    @IBOutlet var secondLabel: NSTextField!
-    @IBOutlet var colonLabel: NSTextField!
+    @IBOutlet weak var minuteLabel: NSTextField!
+    @IBOutlet weak var secondLabel: NSTextField!
+    @IBOutlet weak var colonLabel: NSTextField!
+    
+    @IBOutlet weak var leftButton: NSButton!
+    @IBOutlet weak var rightButton: NSButton!
+    @IBOutlet weak var moreButton: NSButton!
     
     let timer = TimerService()
+    
+    var moreMenu: NSMenu!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         timer.delegate = self
+
+        timer.prepare(seconds: 1500)
         
-        minuteLabel.stringValue = "25"
-        secondLabel.stringValue = "00"
-        colonLabel.stringValue = ":"
+        rightButton.title = "Reset"
+        
+        createMenu()
+    }
+    
+    // Timer delegate functions
+    func onTimerAction(timerData: TimerData) {
+        if timerData.status == .ready {
+            setLabels(seconds: timerData.remaining)
+        }
+
+        setButtons(status: timerData.status)
     }
     
     func onTimerTick(timerData: TimerData) {
         setLabels(seconds: timerData.remaining)
     }
     
+    // Helper functions
     func setLabels(seconds: Int) {
         minuteLabel.stringValue = String(format: "%02d", seconds / 60)
         secondLabel.stringValue = String(format: "%02d", seconds % 60)
+    }
+    
+    func setButtons(status: TimerStatus) {
+        switch status {
+        case .ready:
+            leftButton.title = LeftButtonTitle.start.rawValue
+        case .running:
+            leftButton.title = LeftButtonTitle.stop.rawValue
+        case .paused:
+            leftButton.title = LeftButtonTitle.start.rawValue
+        case .finished:
+            leftButton.title = LeftButtonTitle.ok.rawValue
+        }
     }
     
 }
@@ -56,15 +93,30 @@ extension TimerViewController {
 
 extension TimerViewController {
     
-    @IBAction func startTimer(_ sender: NSButton) {
-        timer.setTime(seconds: 1500) // 25min
-        timer.start()
-        setLabels(seconds: 1500)
+    // Actions
+    @IBAction func leftButtonClicked(_ sender: NSButton) {
+        let timerStatus = timer.timerData.status
+        
+        switch timerStatus {
+        case .ready:
+            timer.start()
+        case .running:
+            timer.stop()
+        case .paused:
+            timer.resume()
+        case .finished:
+            print("finished")
+        }
     }
     
-    @IBAction func stopTimer(_ sender: NSButton) {
-        print("stop")
-        timer.stop()
+    @IBAction func rightButtonClicked(_ sender: NSButton) {
+        timer.prepare(seconds: 1500)
+    }
+    
+    @IBAction func moreButtonClicked(_ sender: NSButton) {
+        if let event = NSApplication.shared.currentEvent, let moreMenu = moreMenu {
+            NSMenu.popUpContextMenu(moreMenu, with: event, for: sender)
+        }
     }
     
 }

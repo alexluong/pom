@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		8F16248621A24B46008DAF0E /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F16248521A24B46008DAF0E /* TimerViewController.swift */; };
 		8F3CA7F721A24FA500EAD79C /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3CA7F621A24FA500EAD79C /* EventMonitor.swift */; };
+		8F7E771921A2C92700E6C873 /* TimerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7E771821A2C92700E6C873 /* TimerMenuController.swift */; };
 		8F8927CE21A252D0002B0DC8 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8927CD21A252D0002B0DC8 /* TimerService.swift */; };
 		8FA6B78521A243B400A04BD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA6B78421A243B400A04BD0 /* AppDelegate.swift */; };
-		8FA6B78721A243B400A04BD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA6B78621A243B400A04BD0 /* ViewController.swift */; };
 		8FA6B78921A243B400A04BD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FA6B78821A243B400A04BD0 /* Assets.xcassets */; };
 		8FA6B78C21A243B400A04BD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FA6B78A21A243B400A04BD0 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -19,10 +19,10 @@
 /* Begin PBXFileReference section */
 		8F16248521A24B46008DAF0E /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimerViewController.swift; path = pom/Timer/TimerViewController.swift; sourceTree = SOURCE_ROOT; };
 		8F3CA7F621A24FA500EAD79C /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		8F7E771821A2C92700E6C873 /* TimerMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerMenuController.swift; sourceTree = "<group>"; };
 		8F8927CD21A252D0002B0DC8 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TimerService.swift; path = pom/Timer/TimerService.swift; sourceTree = SOURCE_ROOT; };
 		8FA6B78121A243B400A04BD0 /* pom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FA6B78421A243B400A04BD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8FA6B78621A243B400A04BD0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8FA6B78821A243B400A04BD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8FA6B78B21A243B400A04BD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8FA6B78D21A243B400A04BD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,7 +65,6 @@
 				8FA6B79621A2469D00A04BD0 /* Timer */,
 				8FA6B78A21A243B400A04BD0 /* Main.storyboard */,
 				8FA6B78421A243B400A04BD0 /* AppDelegate.swift */,
-				8FA6B78621A243B400A04BD0 /* ViewController.swift */,
 				8F3CA7F621A24FA500EAD79C /* EventMonitor.swift */,
 			);
 			path = pom;
@@ -75,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				8F16248521A24B46008DAF0E /* TimerViewController.swift */,
+				8F7E771821A2C92700E6C873 /* TimerMenuController.swift */,
 				8F8927CD21A252D0002B0DC8 /* TimerService.swift */,
 			);
 			name = Timer;
@@ -152,10 +152,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F16248621A24B46008DAF0E /* TimerViewController.swift in Sources */,
-				8FA6B78721A243B400A04BD0 /* ViewController.swift in Sources */,
 				8FA6B78521A243B400A04BD0 /* AppDelegate.swift in Sources */,
 				8F8927CE21A252D0002B0DC8 /* TimerService.swift in Sources */,
 				8F3CA7F721A24FA500EAD79C /* EventMonitor.swift in Sources */,
+				8F7E771921A2C92700E6C873 /* TimerMenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

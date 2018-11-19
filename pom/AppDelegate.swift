@@ -19,12 +19,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
-            button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
+            button.image = NSImage(named: NSImage.Name("StatusBarButtonImage"))
             button.action = #selector(togglePopover(_:))
         }
         
         popover.contentViewController = TimerViewController.freshController()
         
+        // Check mouse click outside of popover -> closePopover
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
             if let strongSelf = self, strongSelf.popover.isShown {
                 strongSelf.closePopover(sender: event)
@@ -36,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         eventMonitor?.stop()
     }
     
-    @objc func togglePopover(_ sender: Any?) {
+    @objc private func togglePopover(_ sender: Any?) {
         if popover.isShown {
             closePopover(sender: sender)
         } else {
@@ -44,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func showPopover(sender: Any?) {
+    private func showPopover(sender: Any?) {
         if let button = statusItem.button {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
         }
@@ -52,11 +53,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         eventMonitor?.start()
     }
     
-    func closePopover(sender: Any?) {
+    private func closePopover(sender: Any?) {
         popover.performClose(sender)
         
         eventMonitor?.stop()
     }
     
 }
-

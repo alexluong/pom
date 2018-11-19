@@ -9,9 +9,10 @@
 import Foundation
 
 enum TimerStatus {
+    case ready
     case running
     case paused
-    case stopped
+    case finished
 }
 
 struct TimerData {
@@ -32,16 +33,24 @@ extension TimerServiceDelegate {
 
 class TimerService {
     
-    var total = 0
-    var remaining = 0
-    var timer: Timer!
-    var timerStatus = TimerStatus.stopped
-    var timerData: TimerData!
+    private var total = 0
+    private var remaining = 0
+    private var timer: Timer!
+    private var timerStatus = TimerStatus.ready
     
-    var delegate: TimerServiceDelegate?
+    public var timerData = TimerData(total: 0, remaining: 0, status: TimerStatus.ready)
     
-    public func setTime(seconds: Int) {
+    public var delegate: TimerServiceDelegate?
+    
+    public func prepare(seconds: Int) {
+        if timerStatus == .running {
+            stop()
+        }
+        timer = nil
         total = seconds
+        remaining = seconds
+        timerStatus = TimerStatus.ready
+        callOnAction()
     }
     
     public func start() {
@@ -62,30 +71,29 @@ class TimerService {
     }
     
     private func startTimer() {
-        print("start")
         timerStatus = TimerStatus.running
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
     }
     
     @objc private func tick() {
         if remaining == 0 {
-            timerStatus = TimerStatus.stopped
+            timerStatus = TimerStatus.finished
             timer.invalidate()
         } else {
             remaining -= 1
         }
         
-        timerData = createTimerData()
+        updateTimerData()
         delegate?.onTimerTick(timerData: timerData)
     }
     
     private func callOnAction() {
-        timerData = createTimerData()
+        updateTimerData()
         delegate?.onTimerAction(timerData: timerData)
     }
     
-    private func createTimerData() -> TimerData {
-        return TimerData(total: total, remaining: remaining, status: timerStatus)
+    private func updateTimerData() {
+        timerData = TimerData(total: total, remaining: remaining, status: timerStatus)
     }
     
 }

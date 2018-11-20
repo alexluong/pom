@@ -8,23 +8,38 @@
 
 import Cocoa
 
-extension TimerViewController {
+class TimerMenuController: NSObject {
     
-    func createMenu() {
-        moreMenu = NSMenu()
+    private var timerMenu: NSMenu!
+    
+    override init() {
+        super.init()
 
-        moreMenu.addItem(NSMenuItem(title: "Do Stuff", action: #selector(self.doStuff(_:)), keyEquivalent: "a"))
-        moreMenu.addItem(NSMenuItem(title: "Preferences...", action: #selector(self.preferences(_:)), keyEquivalent: ""))
-        moreMenu.addItem(NSMenuItem.separator())
-        moreMenu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        timerMenu = NSMenu()
+        timerMenu.addItem(NSMenuItem(title: "Do Stuff", action: #selector(doStuff(_:)), keyEquivalent: "a"))
+        timerMenu.addItem(NSMenuItem(title: "Preferences...", action: #selector(preferences(_:)), keyEquivalent: ""))
+        timerMenu.addItem(NSMenuItem.separator())
+        timerMenu.addItem(NSMenuItem(title: "Quit", action: #selector(terminate), keyEquivalent: "q"))
+        
+        for item:NSMenuItem in timerMenu.items {
+            item.target = self
+        }
     }
     
-    @objc func doStuff(_ sender: Any?) {
-        print("doStuff")
+    public func openMenu(event: NSEvent, sender: NSView) {
+        NSMenu.popUpContextMenu(timerMenu, with: event, for: sender)
+    }
+    
+    @objc private func doStuff(_ sender: Any?) {
+        print("Do Stuff")
     }
     
     @objc private func preferences(_ sender: Any?) {
-        print("preferences")
+        print("Preferences")
+    }
+    
+    @objc private func terminate() {
+        NSApplication.shared.terminate(nil)
     }
     
 }

@@ -14,6 +14,10 @@ enum LeftButtonTitle: String {
     case ok = "OK"
 }
 
+protocol TimerViewControllerDelegate {
+    func onMenuOpen(event: NSEvent, sender: NSView)
+}
+
 class TimerViewController: NSViewController, TimerServiceDelegate {
     
     @IBOutlet weak var minuteLabel: NSTextField!
@@ -24,9 +28,8 @@ class TimerViewController: NSViewController, TimerServiceDelegate {
     @IBOutlet weak var rightButton: NSButton!
     @IBOutlet weak var moreButton: NSButton!
     
-    let timer = TimerService()
-    
-    var moreMenu: NSMenu!
+    private let timer = TimerService()
+    private let timerMenuController = TimerMenuController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +39,6 @@ class TimerViewController: NSViewController, TimerServiceDelegate {
         timer.prepare(seconds: 1500)
         
         rightButton.title = "Reset"
-        
-        createMenu()
     }
     
     // Timer delegate functions
@@ -114,8 +115,8 @@ extension TimerViewController {
     }
     
     @IBAction func moreButtonClicked(_ sender: NSButton) {
-        if let event = NSApplication.shared.currentEvent, let moreMenu = moreMenu {
-            NSMenu.popUpContextMenu(moreMenu, with: event, for: sender)
+        if let event = NSApplication.shared.currentEvent {
+            timerMenuController.openMenu(event: event, sender: sender)
         }
     }
     
